@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css">
+  <title>PORTFOLIO</title>
+  <script type="text/javascript" src="script.js"></script>
+  <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+</head>
+<body>
+  <section id="welcome-page">
+    <div class="menu-block">
+      <nav class="menu-nav">
+        <a  id="links" href="#welcome-page">Home</a>
+        <a  id="links" href="#container">Projects</a>
+        <a  id="links" href="#contacts">Contacts</a>
+      </nav>
+    <a href="#" class="menu-btn">
+      <span></span>
+    </a>
+      </div>
+    <div class="myInfo">
+      <img src="https://scontent.fiev3-1.fna.fbcdn.net/v/t1.0-9/17361803_278236899271827_6246630282438495329_n.jpg?_nc_cat=104&oh=3cf26da29c7c76f386ac56b454631675&oe=5C50CED1" alt="">
+      <h1 class="typewritter">Hi, I'm Anatolii</h1>
+      <br>
+      <p>front-end developer</p>
+    </div>
+  </section>
+
+  <section id="introText">
+    <div class="article">
+      <p>"I'm <span class="bold">Anatolii Batushan</span>, web developer. I love to <span class="bold">code</span>, <span class="bold">discover</span> new technologies, and my main credo
+        "If you have a task you've never done, <span class="bold">learn it</span> and make it perfectly."</p>
+        </div>
+  </section>
+  <section id="container">
+    <div class="gallery">
+      <div class="gallery">
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="img/forWebsite1.jpg" alt="htmlAndCss">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="img/forWebsite2.jpg" alt="gekoOnlineShop">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="https://images.unsplash.com/photo-1506045412240-22980140a405?w=500&h=500&fit=crop" alt="people holding umbrellas on a busy street at night lit by street lights and illuminated signs in Tokyo, Japan">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="https://images.unsplash.com/photo-1514041181368-bca62cceffcd?w=500&h=500&fit=crop" alt="car interior from central back seat position showing driver and blurred view through windscreen of a busy road at night">
+		</div>
+
+
+	</div>
+      </div>
+  </section>
+  <section id="contacts">
+    <h1>How will you contact me?</h1>
+    <p>Choose one...</p>
+    <div class="links">
+      <a href="https://www.facebook.com/profile.php?id=100012565567885" class="contact-details">Facebook</a>
+      <a  id='profile-link' href="https://github.com/Koower101" class="contact-details" target="_blank">Github</a>
+      <a href="https://www.linkedin.com/in/anatolii-batushan-63252a154/" class="contact-details">LinkedIn</a>
+      <a href="mailto:tolikbatushan@gmail.com" class="contact-details">Mail</a>
+      <a href="" class="contact-details">Call me</a>
+    </div>
+  </section>
+  <footer>
+    <p>Copyright Anatolii Batushan 2018 © <br>Portfolio. 6.10.2018</p>
+  </footer>
+  <script type="text/javascript">
+  $('.menu-btn').on('click', function(e) {
+  e.preventDefault;
+  $(this).toggleClass('menu-btn_active'); $(".menu-nav").toggleClass('menu-nav_active');
+  });
+
+
+  document.addEventListener('DOMContentLoaded',function(event){
+    // array with texts to type in typewriter
+    var dataText = [ "Anatolii Batushan.", "Web Developer.", "Let's Go!!!"];
+
+    // type one text in the typwriter
+    // keeps calling itself until the text is finished
+    function typeWriter(text, i, fnCallback) {
+      // chekc if text isn't finished yet
+      if (i < (text.length)) {
+        // add next character to h1
+       document.querySelector("h1").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+        // wait for a while and call this function again for next character
+        setTimeout(function() {
+          typeWriter(text, i + 1, fnCallback)
+        }, 100);
+      }
+      // text finished, call callback if there is a callback function
+      else if (typeof fnCallback == 'function') {
+        // call callback after timeout
+        setTimeout(fnCallback, 700);
+      }
+    }
+    // start a typewriter animation for a text in the dataText array
+     function StartTextAnimation(i) {
+       if (typeof dataText[i] == 'undefined'){
+          setTimeout(function() {
+            StartTextAnimation(0);
+          }, 20000);
+       }
+       // check if dataText[i] exists
+      if (i < dataText[i].length) {
+        // text exists! start typewriter animation
+       typeWriter(dataText[i], 0, function(){
+         // after callback (and whole text has been animated), start next text
+         StartTextAnimation(i + 1);
+       });
+      }
+    }
+    // start the text animation
+    StartTextAnimation(0);
+  });
+
+  </script>
+</body>
+</html>
